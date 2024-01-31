@@ -73,10 +73,11 @@ class FoodItemListWidget extends StatelessWidget {
                           ),
                           const Spacer(),
                           ItemCountWidget(
-                              key: ValueKey(itemList[index].id + 100),
-                              item: itemList[index],
-                              categoryIndex: categoryIndex,
-                              itemIndex: index)
+                            key: ValueKey(itemList[index].id + 100),
+                            item: itemList[index],
+                            categoryIndex: categoryIndex,
+                            itemIndex: index,
+                          )
                         ],
                       ),
                     )

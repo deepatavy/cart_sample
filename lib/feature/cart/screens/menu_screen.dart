@@ -1,4 +1,4 @@
-import 'package:cart_sample/api/services.dart';
+import 'package:cart_sample/commons/constants.dart';
 import 'package:cart_sample/feature/cart/cart_bloc/bloc.dart';
 import 'package:cart_sample/feature/cart/model/category_model.dart';
 import 'package:cart_sample/feature/cart/screens/cart_summary_screen.dart';
@@ -6,26 +6,14 @@ import 'package:cart_sample/feature/cart/screens/widgets/food_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartBloc(cartRepo: CartServices()),
-      child: const MenuScreenWidget(),
-    );
-  }
+  State<MenuScreen> createState() => _MenuScreenState();
 }
 
-class MenuScreenWidget extends StatefulWidget {
-  const MenuScreenWidget({super.key});
-
-  @override
-  State<MenuScreenWidget> createState() => _MenuScreenWidgetState();
-}
-
-class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepAliveClientMixin {
+class _MenuScreenState extends State<MenuScreen> with AutomaticKeepAliveClientMixin {
   List<Category> categoryList = [];
 
   @override
@@ -44,8 +32,8 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Menu',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+          Constants.menuText,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
         ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))],
       ),
@@ -58,7 +46,7 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
           return Stack(
             children: [
               ListView.builder(
-                key: const PageStorageKey<String>('CartScreenWidgetListView'),
+                key: const PageStorageKey<String>(Constants.tempKeyText),
                 // Use PageStorageKey to maintain scroll position
                 itemBuilder: (context, index) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +63,10 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
                       categoryIndex: index,
                       itemList: state.categoryList[index].items,
                     ),
-                    const SizedBox(height: 100,)
+                    if (index == state.categoryList.length - 1)
+                      const SizedBox(
+                        height: 100,
+                      )
                   ],
                 ),
                 itemCount: state.categoryList.length,
@@ -121,7 +112,7 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
                               backgroundColor: Colors.green, // background
                             ),
                             child: Text(
-                              'Place Order',
+                              Constants.placeOrderText,
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium
@@ -141,7 +132,6 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
   }
 
   showAlertDialog(BuildContext context) {
-    // Create button
     Widget okButton = TextButton(
       child: const Text("OK"),
       onPressed: () {
@@ -149,16 +139,13 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
       },
     );
 
-    // Create AlertDialog
     AlertDialog alert = AlertDialog(
-      title: const Text("Plateron"),
-      content: const Text("Looks like your cart is empty! Please add items before proceeding with your order."),
+      title: const Text(Constants.appName),
+      content: const Text(Constants.alertEmptyCartText),
       actions: [
         okButton,
       ],
     );
-
-    // show the dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {

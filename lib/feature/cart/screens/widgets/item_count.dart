@@ -1,3 +1,4 @@
+import 'package:cart_sample/commons/constants.dart';
 import 'package:cart_sample/feature/cart/cart_bloc/bloc.dart';
 import 'package:cart_sample/feature/cart/model/item_model.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,6 @@ class ItemCountWidget extends StatelessWidget {
                     icon: const Icon(Icons.remove_outlined, color: Colors.green, size: 18)),
                 Text(
                   item.quantity.toString(),
-
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green),
                 ),
                 IconButton(
@@ -74,9 +74,9 @@ class ItemCountWidget extends StatelessWidget {
                     style: BorderStyle.solid,
                   ),
                 ),
-                child:  Center(
+                child: Center(
                     child: Text(
-                  "ADD",
+                  Constants.addText,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green),
                 ))));
   }

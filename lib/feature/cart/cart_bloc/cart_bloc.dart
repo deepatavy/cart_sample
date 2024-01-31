@@ -13,6 +13,7 @@ class CartBloc extends Bloc<CartEvents, CartState> {
   CartBloc({required this.cartRepo}) : super(Empty());
   List<FoodItem> cartItemList = [];
   int cartItemCount = 0;
+  double cartValueCount = 0;
 
   @override
   Stream<CartState> mapEventToState(CartEvents event) async* {
@@ -21,7 +22,7 @@ class CartBloc extends Bloc<CartEvents, CartState> {
       try {
         // Simulate loading data from API
         await Future.delayed(const Duration(seconds: 2));
-        yield CategoryListLoaded(categoryList: await cartRepo.getCategoryList());
+        yield CategoryListLoaded(categoryList: await cartRepo.getCategoryList(), selectedItemList: cartItemList);
       } on SocketException {
         yield ErrorLoadingCart(
           error: NoInternetException('No Internet'),
@@ -58,13 +59,21 @@ class CartBloc extends Bloc<CartEvents, CartState> {
           cartItemList.add(updatedCategories[categoryIndex].items[itemIndex]);
         }
       }
-      calculateUpdatedItemCount(cartItemList);
+      calculateUpdatedItemCount();
+      calculateUpdatedValueCount();
       yield LoadingData();
-      yield CategoryListLoaded(categoryList: updatedCategories);
+      yield CategoryListLoaded(categoryList: updatedCategories, selectedItemList: cartItemList);
     }
   }
 
-  void calculateUpdatedItemCount(List<FoodItem> cartItemList) {
+  void calculateUpdatedValueCount() {
+    cartValueCount = 0;
+    for (var data in cartItemList) {
+      cartValueCount = cartValueCount + (data.quantity * data.price);
+    }
+  }
+
+  void calculateUpdatedItemCount() {
     cartItemCount = 0;
     for (var data in cartItemList) {
       cartItemCount += data.quantity;
