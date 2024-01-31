@@ -24,7 +24,7 @@ class CartScreenWidget extends StatefulWidget {
   State<CartScreenWidget> createState() => _CartScreenWidgetState();
 }
 
-class _CartScreenWidgetState extends State<CartScreenWidget> {
+class _CartScreenWidgetState extends State<CartScreenWidget> with AutomaticKeepAliveClientMixin {
   List<Category> categoryList = [];
 
   @override
@@ -34,7 +34,11 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -50,23 +54,37 @@ class _CartScreenWidgetState extends State<CartScreenWidget> {
           return Center(child: Text(error.message));
         }
         if (state is CategoryListLoaded) {
-          return ListView.builder(
-            itemCount: state.categoryList.length,
-            itemBuilder: (context, index) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-                  child: Text(
-                    state.categoryList[index].name,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  key: const PageStorageKey<String>('CartScreenWidgetListView'),
+                  // Use PageStorageKey to maintain scroll position
+                  itemBuilder: (context, index) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+                        child: Text(
+                          state.categoryList[index].name,
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      FoodItemListWidget(
+                        key: ValueKey(state.categoryList[index].id),
+                        categoryIndex: index,
+                        itemList: state.categoryList[index].items,
+                      ),
+                    ],
                   ),
+                  itemCount: state.categoryList.length,
                 ),
-                FoodItemListWidget(
-                  itemList: state.categoryList[index].items,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: Center(child: Text("Items Selected ${BlocProvider.of<CartBloc>(context).cartItemCount}")))
+            ],
           );
         }
         return const Center(child: CircularProgressIndicator());
