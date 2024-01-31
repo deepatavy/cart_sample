@@ -105,34 +105,35 @@ class CartSummaryScreen extends StatelessWidget {
                   child: Divider(),
                 ),
                 Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 24.0, right: 24, bottom: 100),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              Constants.totalText,
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              " (${BlocProvider.of<CartBloc>(context).cartItemCount} ${BlocProvider.of<CartBloc>(context).cartItemCount > 1 ? Constants.itemsText : Constants.itemText})",
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          "\$ ${BlocProvider.of<CartBloc>(context).cartValueCount.toStringAsFixed(2)}",
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                Constants.totalText,
-                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                " (${BlocProvider.of<CartBloc>(context).cartItemCount} ${BlocProvider.of<CartBloc>(context).cartItemCount > 1 ? Constants.itemsText : Constants.itemText})",
-                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "\$ ${BlocProvider.of<CartBloc>(context).cartValueCount.toStringAsFixed(2)}",
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ))
+                  ),
+                )
               ],
             ),
           );

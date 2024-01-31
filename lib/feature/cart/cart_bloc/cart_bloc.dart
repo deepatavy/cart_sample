@@ -21,7 +21,7 @@ class CartBloc extends Bloc<CartEvents, CartState> {
       yield LoadingData();
       try {
         // Simulate loading data from API
-        await Future.delayed(const Duration(seconds: 2));
+        // await Future.delayed(const Duration(seconds: 2));
         yield CategoryListLoaded(categoryList: await cartRepo.getCategoryList(), selectedItemList: cartItemList);
       } on SocketException {
         yield ErrorLoadingCart(

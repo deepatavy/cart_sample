@@ -5,6 +5,7 @@ import 'package:cart_sample/feature/cart/screens/cart_summary_screen.dart';
 import 'package:cart_sample/feature/cart/screens/widgets/food_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -102,6 +103,7 @@ class _MenuScreenState extends State<MenuScreen> with AutomaticKeepAliveClientMi
                           ElevatedButton(
                             onPressed: () {
                               if (BlocProvider.of<CartBloc>(context).cartItemCount == 0) {
+                                Vibrate.feedback(FeedbackType.error);
                                 showAlertDialog(context);
                               } else {
                                 Navigator.of(context)
@@ -133,7 +135,7 @@ class _MenuScreenState extends State<MenuScreen> with AutomaticKeepAliveClientMi
 
   showAlertDialog(BuildContext context) {
     Widget okButton = TextButton(
-      child: const Text("OK"),
+      child: const Text(Constants.okText),
       onPressed: () {
         Navigator.of(context).pop();
       },

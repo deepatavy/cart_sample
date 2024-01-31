@@ -3,6 +3,7 @@ import 'package:cart_sample/feature/cart/cart_bloc/bloc.dart';
 import 'package:cart_sample/feature/cart/model/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class ItemCountWidget extends StatelessWidget {
   final FoodItem item;
@@ -32,6 +33,7 @@ class ItemCountWidget extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
+                      Vibrate.feedback(FeedbackType.medium);
                       BlocProvider.of<CartBloc>(context).add(UpdateItemQuantity(
                           categoryIndex: categoryIndex, itemIndex: itemIndex, newQuantity: item.quantity - 1));
                     },
@@ -47,6 +49,7 @@ class ItemCountWidget extends StatelessWidget {
                     size: 18,
                   ),
                   onPressed: () {
+                    Vibrate.feedback(FeedbackType.medium);
                     BlocProvider.of<CartBloc>(context).add(UpdateItemQuantity(
                         categoryIndex: categoryIndex, itemIndex: itemIndex, newQuantity: item.quantity + 1));
                   },
@@ -58,6 +61,7 @@ class ItemCountWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             onTap: () {
+              Vibrate.feedback(FeedbackType.medium);
               BlocProvider.of<CartBloc>(context).add(UpdateItemQuantity(
                   categoryIndex: categoryIndex, itemIndex: itemIndex, newQuantity: item.quantity + 1));
             },

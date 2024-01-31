@@ -9,6 +9,7 @@ class Constants {
  static const String itemText = "Item";
  static const String itemsText = "Items";
  static const String addText = "ADD";
+ static const String okText = "OK";
  static const String alertTitle = "Plateron";
  static const String alertEmptyCartText = "Looks like your cart is empty! Please add items before proceeding with your order.";
 }
