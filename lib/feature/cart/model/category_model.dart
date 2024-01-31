@@ -2,18 +2,18 @@ import 'package:cart_sample/feature/cart/model/item_model.dart';
 
 class Category {
   int? id;
-  String? name;
-  List<Item>? items;
+  String name = '';
+  List<FoodItem> items = [];
 
-  Category({this.id, this.name, this.items});
+  Category({this.id, required this.name, required this.items});
 
   Category.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     if (json['items'] != null) {
-      items = <Item>[];
+      items = <FoodItem>[];
       json['items'].forEach((v) {
-        items!.add(Item.fromJson(v));
+        items.add(FoodItem.fromJson(v));
       });
     }
   }
@@ -22,9 +22,7 @@ class Category {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    if (items != null) {
-      data['items'] = items!.map((v) => v.toJson()).toList();
-    }
+    data['items'] = items.map((v) => v.toJson()).toList();
     return data;
   }
 }

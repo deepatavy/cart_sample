@@ -8,31 +8,36 @@
           "id": 101,
           "name": "Mozzarella Sticks",
           "price": 6.99,
-          "description": "Golden fried mozzarella sticks served with marinara sauce."
+          "description": "Golden fried mozzarella sticks served with marinara sauce.",
+          "image_url": "https://example.com/images/mozzarella_sticks.jpg"
         },
         {
           "id": 102,
           "name": "Chicken Wings",
           "price": 8.99,
-          "description": "Spicy buffalo wings served with blue cheese dressing."
+          "description": "Spicy buffalo wings served with blue cheese dressing.",
+          "image_url": "https://example.com/images/chicken_wings.jpg"
         },
         {
           "id": 103,
           "name": "Spinach Artichoke Dip",
           "price": 7.99,
-          "description": "Creamy spinach and artichoke dip served with tortilla chips."
+          "description": "Creamy spinach and artichoke dip served with tortilla chips.",
+          "image_url": "https://example.com/images/spinach_artichoke_dip.jpg"
         },
         {
           "id": 104,
           "name": "Bruschetta",
           "price": 5.99,
-          "description": "Toasted bread topped with diced tomatoes, garlic, and basil."
+          "description": "Toasted bread topped with diced tomatoes, garlic, and basil.",
+          "image_url": "https://example.com/images/bruschetta.jpg"
         },
         {
           "id": 105,
           "name": "Calamari",
           "price": 9.99,
-          "description": "Crispy calamari rings served with marinara sauce and lemon wedges."
+          "description": "Crispy calamari rings served with marinara sauce and lemon wedges.",
+          "image_url": "https://example.com/images/calamari.jpg"
         }
       ]
     },
@@ -44,31 +49,36 @@
           "id": 201,
           "name": "Grilled Salmon",
           "price": 15.99,
-          "description": "Fresh grilled salmon fillet served with steamed vegetables and rice."
+          "description": "Fresh grilled salmon fillet served with steamed vegetables and rice.",
+          "image_url": "https://example.com/images/grilled_salmon.jpg"
         },
         {
           "id": 202,
           "name": "Chicken Parmesan",
           "price": 12.99,
-          "description": "Breaded chicken breast topped with marinara sauce and melted cheese, served with spaghetti."
+          "description": "Breaded chicken breast topped with marinara sauce and melted cheese, served with spaghetti.",
+          "image_url": "https://example.com/images/chicken_parmesan.jpg"
         },
         {
           "id": 203,
           "name": "Steak Frites",
           "price": 18.99,
-          "description": "Grilled sirloin steak served with French fries and garlic butter."
+          "description": "Grilled sirloin steak served with French fries and garlic butter.",
+          "image_url": "https://example.com/images/steak_frites.jpg"
         },
         {
           "id": 204,
           "name": "Vegetable Stir-Fry",
           "price": 10.99,
-          "description": "Assorted vegetables stir-fried in a savory sauce, served with rice."
+          "description": "Assorted vegetables stir-fried in a savory sauce, served with rice.",
+          "image_url": "https://example.com/images/vegetable_stir_fry.jpg"
         },
         {
           "id": 205,
           "name": "Pasta Primavera",
           "price": 11.99,
-          "description": "Mixed vegetables sautéed in garlic and olive oil, tossed with pasta."
+          "description": "Mixed vegetables sautéed in garlic and olive oil, tossed with pasta.",
+          "image_url": "https://example.com/images/pasta_primavera.jpg"
         }
       ]
     }
