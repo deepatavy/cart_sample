@@ -1,30 +1,30 @@
 import 'package:cart_sample/api/services.dart';
 import 'package:cart_sample/feature/cart/cart_bloc/bloc.dart';
 import 'package:cart_sample/feature/cart/model/category_model.dart';
-import 'package:cart_sample/feature/cart/screens/widgets/cart_item_list.dart';
+import 'package:cart_sample/feature/cart/screens/widgets/food_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CartBloc(cartRepo: CartServices()),
-      child: const CartScreenWidget(),
+      child: const MenuScreenWidget(),
     );
   }
 }
 
-class CartScreenWidget extends StatefulWidget {
-  const CartScreenWidget({super.key});
+class MenuScreenWidget extends StatefulWidget {
+  const MenuScreenWidget({super.key});
 
   @override
-  State<CartScreenWidget> createState() => _CartScreenWidgetState();
+  State<MenuScreenWidget> createState() => _MenuScreenWidgetState();
 }
 
-class _CartScreenWidgetState extends State<CartScreenWidget> with AutomaticKeepAliveClientMixin {
+class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepAliveClientMixin {
   List<Category> categoryList = [];
 
   @override
@@ -43,7 +43,7 @@ class _CartScreenWidgetState extends State<CartScreenWidget> with AutomaticKeepA
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'My Cart',
+          'Menu',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart))],
@@ -80,7 +80,7 @@ class _CartScreenWidgetState extends State<CartScreenWidget> with AutomaticKeepA
                   itemCount: state.categoryList.length,
                 ),
               ),
-              SizedBox(
+              Container(
                   width: double.infinity,
                   height: 40,
                   child: Center(child: Text("Items Selected ${BlocProvider.of<CartBloc>(context).cartItemCount}")))

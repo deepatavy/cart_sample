@@ -37,7 +37,8 @@ class ItemCountWidget extends StatelessWidget {
                     icon: const Icon(Icons.remove_outlined, color: Colors.green, size: 18)),
                 Text(
                   item.quantity.toString(),
-                  style: const TextStyle(color: Colors.green),
+
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green),
                 ),
                 IconButton(
                   icon: const Icon(
@@ -73,10 +74,10 @@ class ItemCountWidget extends StatelessWidget {
                     style: BorderStyle.solid,
                   ),
                 ),
-                child: const Center(
+                child:  Center(
                     child: Text(
                   "ADD",
-                  style: TextStyle(color: Colors.green),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.green),
                 ))));
   }
 }

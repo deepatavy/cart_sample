@@ -68,13 +68,15 @@ class FoodItemListWidget extends StatelessWidget {
                             color: itemList[index].isVeg ? Colors.green : Colors.red,
                           ),
                           Text(
-                            ' \$${itemList[index].price} ' + itemList[index].quantity.toString(),
+                            ' \$${itemList[index].price}',
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           const Spacer(),
                           ItemCountWidget(
-                              key: ValueKey(itemList[index].id+100),
-                              item: itemList[index], categoryIndex: categoryIndex, itemIndex: index)
+                              key: ValueKey(itemList[index].id + 100),
+                              item: itemList[index],
+                              categoryIndex: categoryIndex,
+                              itemIndex: index)
                         ],
                       ),
                     )
