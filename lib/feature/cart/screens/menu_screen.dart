@@ -1,6 +1,7 @@
 import 'package:cart_sample/api/services.dart';
 import 'package:cart_sample/feature/cart/cart_bloc/bloc.dart';
 import 'package:cart_sample/feature/cart/model/category_model.dart';
+import 'package:cart_sample/feature/cart/screens/cart_summary_screen.dart';
 import 'package:cart_sample/feature/cart/screens/widgets/food_item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,36 +55,77 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
           return Center(child: Text(error.message));
         }
         if (state is CategoryListLoaded) {
-          return Column(
+          return Stack(
             children: [
-              Expanded(
-                child: ListView.builder(
-                  key: const PageStorageKey<String>('CartScreenWidgetListView'),
-                  // Use PageStorageKey to maintain scroll position
-                  itemBuilder: (context, index) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-                        child: Text(
-                          state.categoryList[index].name,
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
-                        ),
+              ListView.builder(
+                key: const PageStorageKey<String>('CartScreenWidgetListView'),
+                // Use PageStorageKey to maintain scroll position
+                itemBuilder: (context, index) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+                      child: Text(
+                        state.categoryList[index].name,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
                       ),
-                      FoodItemListWidget(
-                        key: ValueKey(state.categoryList[index].id),
-                        categoryIndex: index,
-                        itemList: state.categoryList[index].items,
-                      ),
-                    ],
-                  ),
-                  itemCount: state.categoryList.length,
+                    ),
+                    FoodItemListWidget(
+                      key: ValueKey(state.categoryList[index].id),
+                      categoryIndex: index,
+                      itemList: state.categoryList[index].items,
+                    ),
+                  ],
                 ),
+                itemCount: state.categoryList.length,
               ),
-              Container(
-                  width: double.infinity,
-                  height: 40,
-                  child: Center(child: Text("Items Selected ${BlocProvider.of<CartBloc>(context).cartItemCount}")))
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(40),
+                        ),
+                        color: Colors.white),
+                    height: 80,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.shopping_cart_outlined),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  "${BlocProvider.of<CartBloc>(context).cartItemCount} ${BlocProvider.of<CartBloc>(context).cartItemCount > 1 ? 'Items' : 'Item'}",
+                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CartSummaryScreen()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green, // background
+                            ),
+                            child: Text(
+                              'Place Order',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.w600, color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
+              )
             ],
           );
         }
