@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Appetizers",
+      "items": [
+        {
+          "id": 101,
+          "name": "Mozzarella Sticks",
+          "price": 6.99,
+          "description": "Golden fried mozzarella sticks served with marinara sauce."
+        },
+        {
+          "id": 102,
+          "name": "Chicken Wings",
+          "price": 8.99,
+          "description": "Spicy buffalo wings served with blue cheese dressing."
+        },
+        {
+          "id": 103,
+          "name": "Spinach Artichoke Dip",
+          "price": 7.99,
+          "description": "Creamy spinach and artichoke dip served with tortilla chips."
+        },
+        {
+          "id": 104,
+          "name": "Bruschetta",
+          "price": 5.99,
+          "description": "Toasted bread topped with diced tomatoes, garlic, and basil."
+        },
+        {
+          "id": 105,
+          "name": "Calamari",
+          "price": 9.99,
+          "description": "Crispy calamari rings served with marinara sauce and lemon wedges."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Main Courses",
+      "items": [
+        {
+          "id": 201,
+          "name": "Grilled Salmon",
+          "price": 15.99,
+          "description": "Fresh grilled salmon fillet served with steamed vegetables and rice."
+        },
+        {
+          "id": 202,
+          "name": "Chicken Parmesan",
+          "price": 12.99,
+          "description": "Breaded chicken breast topped with marinara sauce and melted cheese, served with spaghetti."
+        },
+        {
+          "id": 203,
+          "name": "Steak Frites",
+          "price": 18.99,
+          "description": "Grilled sirloin steak served with French fries and garlic butter."
+        },
+        {
+          "id": 204,
+          "name": "Vegetable Stir-Fry",
+          "price": 10.99,
+          "description": "Assorted vegetables stir-fried in a savory sauce, served with rice."
+        },
+        {
+          "id": 205,
+          "name": "Pasta Primavera",
+          "price": 11.99,
+          "description": "Mixed vegetables sautéed in garlic and olive oil, tossed with pasta."
+        }
+      ]
+    }
+  ]
+}
