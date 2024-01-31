@@ -75,6 +75,7 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
                       categoryIndex: index,
                       itemList: state.categoryList[index].items,
                     ),
+                    const SizedBox(height: 100,)
                   ],
                 ),
                 itemCount: state.categoryList.length,
@@ -109,7 +110,12 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CartSummaryScreen()));
+                              if (BlocProvider.of<CartBloc>(context).cartItemCount == 0) {
+                                showAlertDialog(context);
+                              } else {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) => const CartSummaryScreen()));
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green, // background
@@ -131,6 +137,33 @@ class _MenuScreenWidgetState extends State<MenuScreenWidget> with AutomaticKeepA
         }
         return const Center(child: CircularProgressIndicator());
       }),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // Create button
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text("Plateron"),
+      content: const Text("Looks like your cart is empty! Please add items before proceeding with your order."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
