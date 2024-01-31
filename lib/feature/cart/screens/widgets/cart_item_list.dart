@@ -30,21 +30,16 @@ class FoodItemListWidget extends StatelessWidget {
                         alignment: Alignment.center,
                         height: 100,
                         width: 100,
-                        color: Colors.red.withAlpha(80),
+                        color: Colors.grey.withAlpha(80),
                         child: Text(
                           itemList[index].name[0],
                           style: const TextStyle(fontSize: 24),
                         ),
                       );
                     },
-                    placeholder: (_, __) => Container(
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 100,
-                      color: Colors.red.withAlpha(80),
-                      child: Text(
-                        itemList[index].name,
-                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    placeholder: (_, __) => const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.grey,
                       ),
                     ),
                   ),

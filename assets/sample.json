@@ -9,35 +9,35 @@
           "name": "Mozzarella Sticks",
           "price": 6.99,
           "description": "Golden fried mozzarella sticks served with marinara sauce.",
-          "image_url": "https://example.com/images/mozzarella_sticks.jpg"
+          "image_url": "https://images.pexels.com/photos/5639378/pexels-photo-5639378.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 102,
           "name": "Chicken Wings",
           "price": 8.99,
           "description": "Spicy buffalo wings served with blue cheese dressing.",
-          "image_url": "https://example.com/images/chicken_wings.jpg"
+          "image_url": "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 103,
           "name": "Spinach Artichoke Dip",
           "price": 7.99,
           "description": "Creamy spinach and artichoke dip served with tortilla chips.",
-          "image_url": "https://example.com/images/spinach_artichoke_dip.jpg"
+          "image_url": "https://images.pexels.com/photos/7785366/pexels-photo-7785366.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 104,
           "name": "Bruschetta",
           "price": 5.99,
           "description": "Toasted bread topped with diced tomatoes, garlic, and basil.",
-          "image_url": "https://example.com/images/bruschetta.jpg"
+          "image_url": "https://images.pexels.com/photos/6126314/pexels-photo-6126314.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 105,
           "name": "Calamari",
           "price": 9.99,
           "description": "Crispy calamari rings served with marinara sauce and lemon wedges.",
-          "image_url": "https://example.com/images/calamari.jpg"
+          "image_url": "https://images.pexels.com/photos/4083582/pexels-photo-4083582.jpeg?auto=compress&cs=tinysrgb&w=200"
         }
       ]
     },
@@ -50,35 +50,35 @@
           "name": "Grilled Salmon",
           "price": 15.99,
           "description": "Fresh grilled salmon fillet served with steamed vegetables and rice.",
-          "image_url": "https://example.com/images/grilled_salmon.jpg"
+          "image_url": "https://images.pexels.com/photos/3763847/pexels-photo-3763847.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 202,
           "name": "Chicken Parmesan",
           "price": 12.99,
           "description": "Breaded chicken breast topped with marinara sauce and melted cheese, served with spaghetti.",
-          "image_url": "https://example.com/images/chicken_parmesan.jpg"
+          "image_url": "https://images.pexels.com/photos/8448318/pexels-photo-8448318.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 203,
           "name": "Steak Frites",
           "price": 18.99,
           "description": "Grilled sirloin steak served with French fries and garlic butter.",
-          "image_url": "https://example.com/images/steak_frites.jpg"
+          "image_url": "https://images.pexels.com/photos/361184/asparagus-steak-veal-steak-veal-361184.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 204,
           "name": "Vegetable Stir-Fry",
           "price": 10.99,
           "description": "Assorted vegetables stir-fried in a savory sauce, served with rice.",
-          "image_url": "https://example.com/images/vegetable_stir_fry.jpg"
+          "image_url": "https://images.pexels.com/photos/3843224/pexels-photo-3843224.jpeg?auto=compress&cs=tinysrgb&w=200"
         },
         {
           "id": 205,
           "name": "Pasta Primavera",
           "price": 11.99,
           "description": "Mixed vegetables sautéed in garlic and olive oil, tossed with pasta.",
-          "image_url": "https://example.com/images/pasta_primavera.jpg"
+          "image_url": "https://images.pexels.com/photos/8108191/pexels-photo-8108191.jpeg?auto=compress&cs=tinysrgb&w=200"
         }
       ]
     }
